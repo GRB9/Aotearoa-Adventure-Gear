@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Shipping Details</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f5f5f5;
+    color: #444;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #2F4F4F;
+}
+
+header img { 
+    height: 40px; 
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    margin-left: auto;
+    gap: 12px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.divider {
+    color: white;
+}
+
+/* TRANSPARENT CART BUTTON */
+.cart-link {
+    margin-left: 20px;
+    background: transparent;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid white;
+    transition: all 0.2s ease-in-out;
+}
+
+.cart-link:hover {
+    background: rgb(3, 244, 115);
+    transform: translateY(-2px);
+}
+
+/* STEPS */
+.checkout-steps {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    padding: 30px 60px;
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+    color: #aaa;
+    font-size: 20px;
+}
+
+.step.active {
+    color: #222;
+}
+
+/* LAYOUT */
+.container {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+}
+
+.left,
+.right {
+    background: #fff;
+    padding: 25px;
+}
+
+.left {
+    flex: 1;
+}
+
+.right {
+    width: 320px;
+}
+
+/* FORM */
+.row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+/* SHIPPING */
+.shipping-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.option {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+/* BUTTONS */
+.buttons {
+    margin-top: 25px;
+}
+
+.buttons button {
+    padding: 14px 26px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* NEXT BUTTON */
+.next-btn {
+    background: #0e04c2fd;
+    color: white;
+}
+
+.next-btn:hover {
+    background: #444;
+    transform: translateY(-2px);
+}
+
+/* CANCEL BUTTON */
+.cancel-btn {
+    background: #ddd;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background: #bbb;
+    transform: translateY(-2px);
+}
+
+/* INFO TEXT */
+.info-text {
+    margin-top: 12px;
+    font-size: 14px;
+    color: green;
+}
+
+/* SUMMARY */
+.summary-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.summary-item img {
+    width: 70px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* FOOTER */
+footer {
+    background: #2F4F4F;
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+    color: #f3efefe8;
+    font-size: 14px;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #f3efefe8;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links span {
+    margin: 0 10px;
+    color: #f3efefe8;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="images/logo.png" alt="Logo">
+
+    <nav>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <span class="divider">|</span>
+            <a href="#">About</a>
+            <span class="divider">|</span>
+            <a href="#">Shop</a>
+            <span class="divider">|</span>
+            <a href="#">Help</a>
+        </div>
+
+        <a class="cart-link" href="#">
+            <i class="fa fa-cart-shopping"></i> Cart
+        </a>
+    </nav>
+</header>
+
+<div class="checkout-steps">
+    <div class="step">1 Cart</div>
+    <div class="step active">2 Shipping</div>
+    <div class="step">3 Payment</div>
+</div>
+
+<div class="container">
+
+    <div class="left">
+
+        <div class="row">
+            <input type="text" placeholder="First Name">
+            <input type="text" placeholder="Last Name">
+        </div>
+
+        <input type="text" placeholder="Address">
+
+        <br><br>
+
+        <div class="row">
+            <select>
+                <option>Country</option>
+                <option>New Zealand</option>
+                <option>Australia</option>
+            </select>
+
+            <input type="text" placeholder="City">
+        </div>
+
+        <div class="row">
+            <input type="text" placeholder="Zip">
+            <input type="text" placeholder="Phone">
+        </div>
+
+        <div class="shipping-options">
+
+            <label class="option">
+                <input type="radio" name="shipping" value="0" checked>
+                Free Shipping (2–5 days)
+            </label>
+
+            <label class="option">
+                <input type="radio" name="shipping" value="20">
+                Next Day Delivery ($20)
+            </label>
+
+        </div>
+
+        <div class="buttons">
+            <button class="next-btn">Next</button>
+
+            <button class="cancel-btn" onclick="window.location.reload()">
+                Cancel
+            </button>
+
+            <div class="info-text">
+                Free shipping on orders over $600
+            </div>
+        </div>
+
+    </div>
+
+    <div class="right">
+
+        <h2>Summary</h2>
+
+        <div class="summary-item" data-price="500">
+            <img src="images/backpack.jpg" alt="Backpack">
+            <div>
+                Mountain Explorer Pack<br>
+                $500
+            </div>
+        </div>
+
+        <div class="summary-item" data-price="300">
+            <img src="images/Tent.jpg" alt="Tent">
+            <div>
+                Tent<br>
+                $300
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="summary-line">
+            <span>Subtotal</span>
+            <span id="subtotal">$0.00</span>
+        </div>
+
+        <div class="summary-line">
+            <span>Shipping</span>
+            <span id="shipping">$0.00</span>
+        </div>
+
+        <div class="summary-line">
+            <span>Tax</span>
+            <span id="tax">$0.00</span>
+        </div>
+
+        <div class="total">
+            <span>Total</span>
+            <span id="total">$0.00</span>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <div class="footer-links">
+        <a href="#">Home</a>
+        <span>|</span>
+
+        <a href="#">About</a>
+        <span>|</span>
+
+        <a href="#">Shop</a>
+        <span>|</span>
+
+        <a href="#">Help</a>
+    </div>
+
+    ©Aotearoa Adventure Gear.
+
+</footer>
+
+<script>
+
+function updateSummary() {
+
+    let subtotal = 0;
+
+    document.querySelectorAll(".summary-item").forEach(item => {
+        subtotal += parseFloat(item.getAttribute("data-price"));
+    });
+
+    let shipping = parseFloat(
+        document.querySelector('input[name="shipping"]:checked').value
+    );
+
+    if (subtotal >= 600) {
+        shipping = 0;
+    }
+
+    let tax = subtotal * 0.0217;
+    let total = subtotal + shipping + tax;
+
+    document.getElementById("subtotal").innerHTML =
+        "$" + subtotal.toFixed(2);
+
+    document.getElementById("shipping").innerHTML =
+        shipping === 0 ? "Free" : "$" + shipping.toFixed(2);
+
+    document.getElementById("tax").innerHTML =
+        "$" + tax.toFixed(2);
+
+    document.getElementById("total").innerHTML =
+        "$" + total.toFixed(2);
+}
+
+document.querySelectorAll('input[name="shipping"]').forEach(radio => {
+    radio.addEventListener("change", updateSummary);
+});
+
+updateSummary();
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

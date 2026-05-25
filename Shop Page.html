@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<title>Aotearoa Adventure Gear</title>
+
+<style>
+:root {
+    --green: #2F4F4F;
+    --teal: #3E6B73;
+    --gray: #888;
+    --light: #fafafa;
+    --border: #e5e5e5;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--light);
+    color: var(--green);
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: var(--green);
+}
+
+.brand a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.brand img {
+    height: 40px;
+}
+
+.nav-right a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: white;
+    opacity: 0.85;
+}
+
+.nav-right a:not(:last-child)::after {
+    content: "|";
+    margin: 0 10px;
+    opacity: 0.5;
+}
+
+.nav-right a:hover {
+    opacity: 1;
+}
+
+/* ✅ FIXED CART (VISIBLE AGAIN) */
+.cart {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: white;
+    color: var(--green);
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* FORCE ICON VISIBILITY */
+.cart svg {
+    stroke: var(--green);
+    display: block;
+}
+
+/* FORCE TEXT VISIBILITY */
+.cart span {
+    color: var(--green);
+    display: inline-block;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 90px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* FEATURED */
+.featured {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.cat img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+}
+
+.shop-box {
+    width: 150px;
+    height: 150px;
+    background: var(--green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* NEWSLETTER */
+.newsletter {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 60px;
+    border-top: 1px solid var(--border);
+}
+
+.newsletter-left img {
+    width: 320px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.newsletter-right {
+    padding-left: 80px;
+}
+
+.newsletter-right input {
+    padding: 12px;
+    width: 260px;
+    border: 1px solid var(--border);
+}
+
+.newsletter-right button {
+    padding: 12px 20px;
+    background: var(--green);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* LOWER */
+.lower {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.left {
+    padding: 60px;
+    border-right: 1px solid var(--border);
+}
+
+/* PRODUCTS */
+.products {
+    padding: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 30px;
+    justify-content: center;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.product img {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.product button {
+    margin-top: 8px;
+    padding: 6px 12px;
+    background: var(--green);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.price {
+    color: var(--teal);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--green);
+    color: white;
+}
+
+/* MOBILE */
+@media(max-width: 700px) {
+    nav { padding: 20px; }
+    .newsletter { grid-template-columns: 1fr; }
+    .lower { grid-template-columns: 1fr; }
+    .products { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="brand">
+        <a href="#">
+            <img src="images/logo.png" alt="Logo">
+            <span>Aotearoa Adventure Gear</span>
+        </a>
+    </div>
+
+    <div class="nav-right">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Shop</a>
+        <a href="#">Help</a>
+
+        <a href="#" class="cart">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2"
+                 viewBox="0 0 24 24" width="16" height="16">
+                <path d="M3 3h2l.4 2M7 13h10l3-8H6.4M7 13L5.4 5M7 13l-2 5h14M17 18a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+            <span>Your Cart</span>
+        </a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Premium Camping & Outdoor Gear</h1>
+</section>
+
+<section class="featured">
+    <h2>Featured Categories</h2>
+    <div class="categories">
+        <div class="cat">
+            <img src="images/Kayak.jpg">
+            <div>Kayaks</div>
+        </div>
+        <div class="cat">
+            <img src="images/Hiking Boots.jpg">
+            <div>Boots</div>
+        </div>
+        <div class="cat">
+            <img src="images/Tent.jpg">
+            <div>Tents</div>
+        </div>
+        <div class="cat">
+            <div class="shop-box">Shop Now</div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <div class="newsletter-left">
+        <img src="images/Outdoor Landscape.jpg" alt="Outdoor">
+    </div>
+
+    <div class="newsletter-right">
+        <h3>Newsletter</h3>
+        <input type="email" placeholder="Email Address">
+        <button>Subscribe</button>
+    </div>
+</section>
+
+<section class="lower">
+    <div class="left">
+        <h2>Top Camping Gear</h2>
+        <button>Browse All</button>
+    </div>
+
+    <div class="products"></div>
+</section>
+
+<footer>
+    Home | About | Shop | Help<br><br>
+    © Aotearoa Adventure Gear
+</footer>
+
+<script>
+const products = [
+    { name: "Base Tent", price: 120, rating: 5, image: "images/Base Tent.jpg" },
+    { name: "Sleeping Bag", price: 250, rating: 4, image: "images/Sleeping Bag.jpg" },
+    { name: "Boots", price: 180, rating: 5, image: "images/Boots.jpg" },
+    { name: "Jacket", price: 140, rating: 4, image: "images/Jacket.jpg" },
+    { name: "Backpack", price: 90, rating: 4, image: "images/Backpack.jpg" },
+    { name: "Chair", price: 110, rating: 5, image: "images/Chair.jpg" }
+];
+
+const container = document.querySelector(".products");
+
+products.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "product";
+
+    div.innerHTML = `
+        <img src="${p.image}">
+        <div>${p.name}</div>
+        <div>${"★".repeat(p.rating)}</div>
+        <div class="price">$${p.price}</div>
+        <button>Add</button>
+    `;
+
+    container.appendChild(div);
+});
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aotearoa Adventure Gear</title>
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #2F4F4F;
+}
+
+/* ================= HEADER ================= */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #2F4F4F;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo img {
+  height: 45px;
+}
+
+header input {
+  padding: 8px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+nav a:not(:last-child)::after {
+  content: "|";
+  margin-left: 10px;
+}
+
+.cart-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgb(159, 235, 168);
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 25px;
+}
+
+.hero-images {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-images img {
+  width: 140px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.btn {
+  margin-top: 25px;
+  padding: 12px 24px;
+  background: #2F4F4F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ================= SECTION ================= */
+
+.section {
+  padding: 60px 20px;
+  background: rgb(245, 247, 245);
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 38px;
+}
+
+/* ================= FEATURED PRODUCTS (UPDATED CAROUSEL) ================= */
+
+.carousel-wrapper {
+  position: relative;
+  max-width: 850px;
+  margin: auto;
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.carousel-item {
+  min-width: 50%; /* show 2 at a time */
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.feature-card {
+  width: 320px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.feature-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.feature-card h4 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.feature-card p {
+  margin-bottom: 20px;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background: rgba(47,79,79,0.9);
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.prev {
+  left: -20px;
+}
+
+.next {
+  right: -20px;
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: auto;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+}
+
+.newsletter-form input {
+  padding: 10px;
+  width: 250px;
+}
+
+/* ================= MORE GEAR ================= */
+
+.more-gear-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.gear-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.gear-card:hover {
+  transform: translateY(-5px);
+}
+
+.gear-card.large {
+  grid-row: span 2;
+}
+
+.gear-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.gear-card.large img {
+  width: 100%;
+  height: 1000px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.gear-info {
+  padding: 15px;
+  text-align: center;
+  background: white;
+}
+
+.price {
+  font-weight: bold;
+  color: #2F4F4F;
+}
+
+/* ================= ABOUT ================= */
+
+.about {
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+  background: #2F4F4F;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 40px;
+  gap: 40px;
+}
+
+footer div {
+  min-width: 140px;
+}
+
+footer h4 {
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 16px;
+}
+
+footer p {
+  margin: 6px 0;
+  text-align: left;
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+}
+
+.footer-bottom {
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  margin-top: 25px;
+  padding-top: 15px;
+  text-align: left;
+}
+
+/* ================= FLOATING ANCHOR ================= */
+
+.floating-anchor {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  background: linear-gradient(135deg,#042bed,#2F4F4F);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 22px;
+  animation: floaty 2.5s infinite;
+  z-index: 9999;
+}
+
+@keyframes floaty {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ================= CHATBOT ================= */
+
+#chatbot-toggle {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg,#0550f2,#2F4F4F);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 28px;
+  z-index: 10000;
+}
+
+#chatbot {
+  position: fixed;
+  bottom: 100px;
+  left: 25px;
+  width: 320px;
+  height: 430px;
+  background: white;
+  border-radius: 16px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+#chat-header {
+  background: #2F4F4F;
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+}
+
+#chat-box {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #f7f7f7;
+}
+
+#chat-input-area {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+}
+
+#chat-input-area button {
+  background: #1F7030;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .newsletter-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .newsletter-form {
+    justify-content: center;
+  }
+
+  .more-gear-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gear-card.large {
+    grid-row: auto;
+  }
+
+  .gear-card.large img {
+    height: 280px;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<a id="top"></a>
+
+<a href="#top" class="floating-anchor">↑</a>
+
+<header>
+
+  <div class="header-left">
+    <a href="#" class="logo">
+      <img src="images/logo.png" alt="Logo">
+    </a>
+    <input type="text" placeholder="Search...">
+  </div>
+
+  <div class="header-right">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Shop</a>
+      <a href="#">Help</a>
+    </nav>
+    <button class="cart-btn">🛒 Your Cart</button>
+  </div>
+
+</header>
+
+<section class="hero">
+  <h1>Explore the Outdoors with Confidence</h1>
+  <div class="hero-images">
+    <img src="images/Outdoor Landscape.jpg">
+    <img src="images/Hiking-Trails.jpg">
+    <img src="images/Mountain-Views.jpg">
+  </div>
+  <button class="btn">Shop Now</button>
+</section>
+
+<!-- ================= FEATURED PRODUCTS ================= -->
+
+<section class="section">
+
+  <h2>Featured Products</h2>
+
+  <div class="carousel-wrapper">
+
+    <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+
+    <div class="carousel">
+      <div class="carousel-track" id="carouselTrack">
+
+        <div class="carousel-item">
+          <div class="feature-card">
+            <img src="images/boots.jpg">
+            <h4>Hiking Boots</h4>
+            <p class="price">$220</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="feature-card">
+            <img src="images/kayak.jpg">
+            <h4>Kayak</h4>
+            <p class="price">$2000</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="feature-card">
+            <img src="images/Mug.jpg">
+            <h4>Camping Mug</h4>
+            <p class="price">$25</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="feature-card">
+            <img src="images/Chair.jpg">
+            <h4>Camping Chair</h4>
+            <p class="price">$80</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="newsletter-container">
+    <div>
+      <h2>Newsletter</h2>
+      <p>Stay updated with the latest camping gear.</p>
+    </div>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Email Address">
+      <button class="btn">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>More Gear</h2>
+  <div class="more-gear-grid">
+    <div class="gear-card large">
+      <img src="images/Sleeping Bag.jpg">
+      <div class="gear-info">
+        <h4>Camping Tent</h4>
+        <p class="price">$220</p>
+      </div>
+    </div>
+
+    <div class="gear-card">
+      <img src="images/jacket.jpg">
+      <div class="gear-info">
+        <h4>Adventure Jacket</h4>
+        <p class="price">$200</p>
+      </div>
+    </div>
+
+    <div class="gear-card">
+      <img src="images/backpack.jpg">
+      <div class="gear-info">
+        <h4>Backpack</h4>
+        <p class="price">$160</p>
+      </div>
+    </div>
+
+    <div class="gear-card">
+      <img src="images/Tent.jpg">
+      <div class="gear-info">
+        <h4>Tent</h4>
+        <p class="price">$250</p>
+      </div>
+    </div>
+
+    <div class="gear-card">
+      <img src="images/boots.jpg">
+      <div class="gear-info">
+        <h4>Hiking Boots</h4>
+        <p class="price">$180</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section about">
+  <h2>About Your Shop</h2>
+  <p>
+    Aotearoa Adventure Gear provides high-quality outdoor equipment
+    for hiking, camping, and adventure across New Zealand.
+  </p>
+</section>
+
+<footer>
+
+  <div>
+    <p>1717 Harrison St</p>
+    <p>CA 94103, USA</p>
+  </div>
+
+  <div>
+    <h4>Main Menu</h4>
+    <p>Home</p>
+    <p>About</p>
+    <p>Shop</p>
+    <p>Help</p>
+  </div>
+
+  <div>
+    <h4>Company</h4>
+    <p>The Company</p>
+    <p>Careers</p>
+    <p>Press</p>
+  </div>
+
+  <div>
+    <h4>Discover</h4>
+    <p>The Team</p>
+    <p>Our History</p>
+    <p>Brand Motto</p>
+  </div>
+
+  <div>
+    <h4>Find Us On</h4>
+    <p>Facebook</p>
+    <p>Twitter</p>
+    <p>Instagram</p>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Aotearoa Adventure Gear</p>
+  </div>
+
+</footer>
+
+<div id="chatbot-toggle">💬</div>
+
+<div id="chatbot">
+  <div id="chat-header">Adventure Assistant</div>
+  <div id="chat-box"></div>
+  <div id="chat-input-area">
+    <input id="chat-input" type="text" placeholder="Ask about gear...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+
+/* ================= CAROUSEL ================= */
+
+let currentIndex = 0;
+
+function moveSlide(direction) {
+
+  const track = document.getElementById("carouselTrack");
+  const items = document.querySelectorAll(".carousel-item");
+
+  const totalItems = items.length;
+  const visibleItems = 2;
+  const maxIndex = totalItems - visibleItems;
+
+  currentIndex += direction;
+
+  if (currentIndex < 0) {
+    currentIndex = maxIndex;
+  }
+
+  if (currentIndex > maxIndex) {
+    currentIndex = 0;
+  }
+
+  track.style.transform = `translateX(-${currentIndex * 50}%)`;
+}
+
+/* ================= CHATBOT (UNCHANGED) ================= */
+
+const chatbotToggle = document.getElementById("chatbot-toggle");
+const chatbot = document.getElementById("chatbot");
+
+chatbotToggle.addEventListener("click", () => {
+  chatbot.style.display =
+    chatbot.style.display === "flex" ? "none" : "flex";
+});
+
+function sendMessage() {
+  const input = document.getElementById("chat-input");
+  const chatBox = document.getElementById("chat-box");
+  const message = input.value.trim();
+
+  if (message === "") return;
+
+  chatBox.innerHTML += `
+    <div style="text-align:right; margin:10px;">
+      <span style="background:#2F4F4F;color:white;padding:8px 12px;border-radius:12px;display:inline-block;">
+        ${message}
+      </span>
+    </div>
+  `;
+
+  let reply = "Thanks for your message!";
+  const lower = message.toLowerCase();
+
+  if (lower.includes("boots")) reply = "🥾 Our hiking boots are perfect for alpine terrain.";
+  else if (lower.includes("tent")) reply = "⛺ Our tents are lightweight and waterproof.";
+  else if (lower.includes("kayak")) reply = "🚣 Our kayaks are ideal for rivers and lakes.";
+  else if (lower.includes("shipping")) reply = "📦 Shipping takes 2–5 business days.";
+
+  setTimeout(() => {
+    chatBox.innerHTML += `
+      <div style="margin:10px;">
+        <span style="background:#e9ecef;color:#333;padding:8px 12px;border-radius:12px;display:inline-block;">
+          ${reply}
+        </span>
+      </div>
+    `;
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 500);
+
+  input.value = "";
+}
+
+</script>
+
+</body>
+</html>
+

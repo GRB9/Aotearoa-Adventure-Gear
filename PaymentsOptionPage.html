@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout Page</title>
+
+<style>
+
+:root {
+    --primary: #2f4f4f;
+    --secondary: #4f6d7a;
+    --light: #f4f4f4;
+    --accent: #3e7c73;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--light);
+}
+
+/* HEADER */
+header {
+    background: var(--primary);
+    padding: 15px 0;
+    width: 100%;
+}
+
+/* NAVIGATION */
+.nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+/* LOGO */
+.logo img {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+/* MENU */
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* HEADER DIVIDERS */
+nav ul li:not(:last-child)::after {
+    content: "|";
+    color: white;
+    margin-left: 20px;
+}
+
+/* CART BUTTON */
+.cart-btn {
+    border: 1px solid white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* CHECKOUT STEPS */
+.checkout-steps {
+    width: 80%;
+    margin: 30px auto 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    color: #bbb;
+}
+
+.step.active {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* MAIN CONTAINER */
+.container {
+    width: 80%;
+    margin: 40px auto;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+}
+
+/* PAYMENT SECTION */
+.payment-options {
+    width: 65%;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* ORDER SUMMARY */
+.summary {
+    width: 35%;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* PAYMENT BOX */
+.payment-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+
+.payment-desc {
+    color: #777;
+    font-size: 14px;
+    margin: 10px 0 15px;
+}
+
+/* CARD INPUTS */
+.card-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.card-row input {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.card-row input:first-child {
+    flex: 2;
+}
+
+.card-row input:nth-child(2),
+.card-row input:nth-child(3) {
+    flex: 1;
+}
+
+.full-width {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* PAYPAL */
+.paypal-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paypal-logo {
+    width: 120px;
+    height: auto;
+}
+
+/* SUMMARY TABLE */
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.summary-table td {
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.item img {
+    width: 55px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* BUTTONS */
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.pay-now {
+    background:#1b158e ;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.cancel {
+    background: #999;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--primary);
+    color: white;
+    margin-top: 40px;
+}
+
+/* FOOTER LINKS */
+.footer-nav {
+    margin-bottom: 10px;
+}
+
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    position: relative;
+}
+
+/* FOOTER DIVIDERS */
+.footer-nav a:not(:last-child)::after {
+    content: "|";
+    color: white;
+    margin-left: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+    <nav class="nav-bar">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <img src="./images/logo.png" alt="Aotearoa Adventure Gear Logo">
+        </div>
+
+        <!-- MENU -->
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#" class="cart-btn">🛒 Cart</a></li>
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- CHECKOUT STEPS -->
+<div class="checkout-steps">
+    <div>1. Cart</div>
+    <div>2. Shipping</div>
+    <div class="step active">3. Payment</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+<div class="main-content">
+
+<!-- PAYMENT SECTION -->
+<div class="payment-options">
+
+<h2>Payment Method</h2>
+
+<form>
+
+    <!-- CREDIT CARD -->
+    <div class="payment-box">
+
+        <label>
+            <input type="radio" name="payment" checked>
+            Credit Card
+        </label>
+
+        <p class="payment-desc">
+            Secure payment using your credit card.
+        </p>
+
+        <div class="card-row">
+
+            <input 
+                type="text"
+                placeholder="0000 0000 0000 0000"
+            >
+
+            <input 
+                type="text"
+                placeholder="MM/YY"
+            >
+
+            <input 
+                type="text"
+                placeholder="CVV"
+            >
+
+        </div>
+
+        <input 
+            type="text"
+            placeholder="Card Holder Name"
+            class="full-width"
+        >
+
+    </div>
+
+    <!-- PAYPAL -->
+    <div class="payment-box">
+
+        <label>
+            <input type="radio" name="payment">
+            PayPal
+        </label>
+
+        <div class="paypal-content">
+
+            <p class="payment-desc">
+                Pay securely using your PayPal account.
+            </p>
+
+            <img 
+                src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg"
+                alt="PayPal Logo"
+                class="paypal-logo"
+            >
+
+        </div>
+
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+
+        <button type="submit" class="pay-now">
+            Pay Now
+        </button>
+
+        <button type="button" class="cancel">
+            Cancel
+        </button>
+
+    </div>
+
+</form>
+
+</div>
+
+<!-- ORDER SUMMARY -->
+<div class="summary">
+
+<h2>Order Summary</h2>
+
+<table class="summary-table">
+
+<tr>
+<td>
+<div class="item">
+
+    <img 
+        src="images/Tent.jpg"
+        alt="Camping Tent"
+    >
+
+    <div>Camping Tent</div>
+
+</div>
+</td>
+
+<td>$300</td>
+</tr>
+
+<tr>
+<td>
+<div class="item">
+
+    <img 
+        src="images/backpack.jpg"
+        alt="Backpack"
+    >
+
+    <div>Backpack</div>
+
+</div>
+</td>
+
+<td>$300</td>
+</tr>
+
+<tr>
+<td>Subtotal</td>
+<td>$600</td>
+</tr>
+
+<tr>
+<td>Shipping</td>
+<td>FREE</td>
+</tr>
+
+<tr>
+<td>Taxes</td>
+<td>$13</td>
+</tr>
+
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$613</strong></td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-nav">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Shop</a>
+        <a href="#">Help</a>
+    </div>
+
+    <p>&copy; Aotearoa Adventure Gear</p>
+
+</footer>
+
+</body>
+</html>
+
+
